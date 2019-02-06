@@ -21,10 +21,6 @@ public class Paciente implements Serializable{
 	private String telefone;
 	private String sexo;
 
-	public Paciente() {
-		
-	}
-
 	public Paciente(Integer id, String nomePaciente, String nomeResponsavel, String endereco, String telefone,
 			String sexo) {
 		super();
@@ -35,7 +31,9 @@ public class Paciente implements Serializable{
 		this.telefone = telefone;
 		this.sexo = sexo;
 	}
-
+	public Paciente() {
+		
+	}
 	public Integer getId() {
 		return id;
 	}
