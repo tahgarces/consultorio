@@ -40,6 +40,8 @@ public class ConsultorioApplication implements CommandLineRunner{
 		paciente1.getConsulta().addAll(Arrays.asList(consulta1));
 		medico1.getConsulta().addAll(Arrays.asList(consulta1));
 		
+		
+		
 		medicoRepository.save(Arrays.asList(medico1));
 		pacienteRepository.save(Arrays.asList(paciente1));
 		consultaRepository.save(Arrays.asList(consulta1));

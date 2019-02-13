@@ -1,5 +1,6 @@
 package com.example.consultorio.services;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ public class ConsultaService {
 	
 	public Consulta buscar (Integer id) {
 		Consulta obj = repo.findOne(id);
+		
 		return obj;
 	}
 }
