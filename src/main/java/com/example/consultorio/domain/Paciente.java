@@ -1,11 +1,14 @@
 package com.example.consultorio.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Paciente implements Serializable{
@@ -20,9 +23,14 @@ public class Paciente implements Serializable{
 	private String endereco;
 	private String telefone;
 	private String sexo;
+	private String diagnostico;
+	
+	@OneToMany(mappedBy="paciente", targetEntity = Consulta.class)
+	
+	private List<Consulta> consulta = new ArrayList<>();
 
 	public Paciente(Integer id, String nomePaciente, String nomeResponsavel, String endereco, String telefone,
-			String sexo) {
+			String sexo, String diagnostico) {
 		super();
 		this.id = id;
 		this.nomePaciente = nomePaciente;
@@ -30,6 +38,7 @@ public class Paciente implements Serializable{
 		this.endereco = endereco;
 		this.telefone = telefone;
 		this.sexo = sexo;
+		this.diagnostico = diagnostico;
 	}
 	public Paciente() {
 		
@@ -81,6 +90,22 @@ public class Paciente implements Serializable{
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
+	
+	public String getDiagnostico() {
+		return diagnostico;
+	}
+	
+	public void setDiagnostico(String diagnostico) {
+		this.diagnostico = diagnostico;
+	}
+	
+	public List<Consulta> getConsulta() {
+		return consulta;
+	}
+	
+	public void setConsulta(List<Consulta> consulta) {
+		this.consulta = consulta;
+	}
 
 	@Override
 	public int hashCode() {
@@ -106,5 +131,6 @@ public class Paciente implements Serializable{
 			return false;
 		return true;
 	}
+	
 
 }
