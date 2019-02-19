@@ -40,9 +40,10 @@ public class Paciente implements Serializable{
 		this.sexo = sexo;
 		this.diagnostico = diagnostico;
 	}
-	public Paciente() {
-		
+	
+	public Paciente() {		
 	}
+	
 	public Integer getId() {
 		return id;
 	}

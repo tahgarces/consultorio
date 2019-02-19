@@ -1,18 +1,34 @@
 package com.example.consultorio.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Optional;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.consultorio.domain.Medico;
 import com.example.consultorio.repositories.MedicoRepository;
 
 @Service
 public class MedicoService {
-	@Autowired
-	private MedicoRepository repo;
-	
-	public Medico buscar (Integer id) {
-		Medico obj = repo.findOne(id);
-		return obj;
+	MedicoRepository medicoRepository;
+
+	public MedicoService(MedicoRepository medicoRepository){
+		this.medicoRepository = medicoRepository;
+	}
+
+	@Transactional
+	public Medico update(Medico medico, Integer id) {
+
+		Optional<Medico> saved = Optional.ofNullable(medicoRepository.findOne(id));
+		if (!saved.isPresent()) {
+			throw new EmptyResultDataAccessException(1);
+		}
+
+		BeanUtils.copyProperties(medico, saved.get(), "id");
+		return medicoRepository.save(saved.get());
+
 	}
 }

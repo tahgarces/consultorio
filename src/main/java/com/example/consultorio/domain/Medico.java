@@ -24,9 +24,8 @@ public class Medico {
 	private List<Consulta> consulta = new ArrayList<>();
 	
 	
-	/*public Medico(){
-
-	}*/
+	public Medico(){
+	}
 
 	public Medico(Integer id, String nome, String crm, String especialidade, String email) {
 		super();
@@ -37,8 +36,6 @@ public class Medico {
 		this.email = email;
 	}
 	
-	
-
 	public List<Consulta> getConsulta() {
 		return consulta;
 	}
